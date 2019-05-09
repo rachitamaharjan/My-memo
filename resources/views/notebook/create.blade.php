@@ -10,7 +10,9 @@
             Create Memos
         </h1>
 
-    <form action = "/notebook" method = "POST">
+<form action = "/notebook" method = "POST" # laravel protects via csrf i. e only this form can access database so we need to pass csrf toke
+>
+    {{csrf_field()}}
         <div class = "form-group">
             <label for = "name">
                 Memo Name

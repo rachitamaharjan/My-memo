@@ -39,7 +39,10 @@ class NotebooksController extends Controller
      */
     public function store(Request $request)
     {
-        return $request -> all();
+        $data = $request -> all();
+        Notebook::create($data);
+        return redirect('/notebook');
+        
     }
 
     /**
