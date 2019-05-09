@@ -10,7 +10,7 @@
             Create Memos
         </h1>
 
-    <form action = "">
+    <form action = "/notebook" method = "POST">
         <div class = "form-group">
             <label for = "name">
                 Memo Name

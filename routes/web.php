@@ -17,6 +17,7 @@ Route::get('/', function () {
     
     Route::get('/notebook', 'NotebooksController@index');
     Route::get('/notebook/create', 'NotebooksController@create');
+    Route::get('/notebook/', 'NotebooksController@store');
 
     #Route::get('/notebook', function () {
     # return view('notebook.notebooks');
