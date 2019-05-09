@@ -13,7 +13,17 @@
 
 Route::get('/', function () {
     return view('index');
-});
+           });
+    
+    Route::get('/notebook', 'NotebooksController@index');
+    
+    #Route::get('/notebook', function () {
+    # return view('notebook.notebooks');
+    #});
+
+Route::get('/notes', function () {
+           return view('notes.notes');
+           });
 
     Route::get('/home/{name}/{fav}', function ($name,$fav) {
         return ($name.' likes '.$fav);
