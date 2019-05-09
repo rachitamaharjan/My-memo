@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+    
+use App\Notebook;
 
 class NotebooksController extends Controller
 {
@@ -13,7 +15,9 @@ class NotebooksController extends Controller
      */
     public function index()
     {
-        return view('notebook.notebooks');
+        $notebooks = Notebook::all();
+        //return $notebooks;
+        return view('notebook.notebooks', compact('notebooks'));
     }
 
     /**
@@ -23,7 +27,8 @@ class NotebooksController extends Controller
      */
     public function create()
     {
-        //
+        return view('notebook.create'); //, compact('notebooks')
+
     }
 
     /**
