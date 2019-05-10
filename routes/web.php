@@ -18,6 +18,10 @@ Route::get('/', function () {
     Route::get('/notebook', 'NotebooksController@index');
     Route::get('/notebook/create', 'NotebooksController@create');
     Route::post('/notebook', 'NotebooksController@store');
+    Route::get('/notebook/{notebook}', 'NotebooksController@edit');
+    Route::put('/notebook/{notebook}', 'NotebooksController@update');
+    Route::delete('/notebook/{notebook}', 'NotebooksController@destroy');
+
 
     #Route::get('/notebook', function () {
     # return view('notebook.notebooks');

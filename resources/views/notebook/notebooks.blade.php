@@ -8,7 +8,7 @@
                     Your Memos
                 </h1>
                 <div class="pull-xs-right">
-                    <a class="btn btn-primary" href="#" role="button">
+                    <a class="btn btn-primary" href="/notebook/create" role="button">
                         New Memo +
                     </a>
                 </div>
@@ -35,10 +35,12 @@
                             <img alt="Responsive image" class="img-fluid" src="/img/notebook.jpg"/>
                         </a>
                         <div class="card-block">
-                            <a class="card-link" href="#">
+                <a class="card-link" href="/notebook/{{$notebook->id}}">
                                 Edit Memo
                             </a>
-                            <form action="#" class="pull-xs-right5 card-link" method="POST" style="display:inline">
+                <form action="/notebook/{{$notebook -> id}}" class="pull-xs-right5 card-link" method="POST" style="display:inline" //used method is DELETE but browser won't understand it, so use POST and specify put like this --->
+                {{csrf_field()}}
+                {{method_field('DELETE')}}
                                 <input class="btn btn-sm btn-danger" type="submit" value="Delete">
                                 </input>
                             </form>

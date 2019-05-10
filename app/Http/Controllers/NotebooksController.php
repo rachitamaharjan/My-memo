@@ -27,7 +27,7 @@ class NotebooksController extends Controller
      */
     public function create()
     {
-        return view('notebook.create'); //, compact('notebooks')
+        return view('notebook.create'); //, compact('notebooks'));
 
     }
 
@@ -64,7 +64,9 @@ class NotebooksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $notebook = Notebook::where('id',$id) -> first();
+        //return $notebook;
+        return view('notebook.edit') -> with('notebook',$notebook);
     }
 
     /**
@@ -76,7 +78,10 @@ class NotebooksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $notebook = Notebook::where('id', $id) -> first();
+        $notebook -> update($request -> all());
+        return redirect('/notebook');
+
     }
 
     /**
@@ -87,6 +92,9 @@ class NotebooksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $notebook = Notebook::where('id', $id) -> first();
+        $notebook -> delete();
+        return redirect('/notebook');
+        
     }
 }
