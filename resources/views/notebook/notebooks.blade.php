@@ -27,17 +27,17 @@
                 <div class="col-sm-6 col-md-3">
                     <div class="card">
                         <div class="card-block">
-                            <a href="#">
+                            <a href="/notebook/{{$notebook -> id}}">
                                 <h4 class="card-title">
                                 {{$notebook -> name}}
                                 </h4>
                             </a>
                         </div>
-                        <a href="{{route("notebooks.show")}}">
+                        <a href="#">
                             <img alt="Responsive image" class="img-fluid" src="/img/notebook.jpg"/>
                         </a>
                         <div class="card-block">
-                <a class="card-link" href="/notebook/{{$notebook->id}}">
+                <a class="card-link" href="/notebook/{{$notebook->id}}/edit">
                                 Edit Memo
                             </a>
                 <form action="/notebook/{{$notebook -> id}}" class="pull-xs-right5 card-link" method="POST" style="display:inline" //used method is DELETE but browser won't understand it, so use POST and specify put like this --->

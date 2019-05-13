@@ -20,13 +20,15 @@ Route::group(['middleware' => 'auth'], function(){
              Route::get('/notebook', 'NotebooksController@index');
              Route::get('/notebook/create', 'NotebooksController@create')-> name('notebooks.create');/*just to make it easier to write and understand*/
              Route::post('/notebook', 'NotebooksController@store');
-             Route::get('/notebook/{notebook}', 'NotebooksController@edit');
+             Route::get('/notebook/{notebook}/edit', 'NotebooksController@edit');
+             Route::get('/notebook/{notebook}', 'NotebooksController@show');
              Route::put('/notebook/{notebook}', 'NotebooksController@update');
              Route::delete('/notebook/{notebook}', 'NotebooksController@destroy');
              
+             Route::resource('notes','NotesController');
+             
              });
 
-  
 
 
     #Route::get('/notebook', function () {

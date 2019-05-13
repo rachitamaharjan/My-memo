@@ -60,7 +60,9 @@ class NotebooksController extends Controller
      */
     public function show($id)
     {
-        //
+        $notebook = Notebook::findorFail($id); //findorFail() will give exception, only find() won't
+        $notes = $notebook -> notes();
+        return view('notes.index', compact('notes'));
     }
 
     /**
