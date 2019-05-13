@@ -8,7 +8,9 @@
                     Your Memos
                 </h1>
                 <div class="pull-xs-right">
-                    <a class="btn btn-primary" href="/notebook/create" role="button">
+                <a class="btn btn-primary" href="{{route('notebooks.create')}}" role="button">
+                <b //<a class="btn btn-primary" href="/notebook/create" role="button">
+                </b>
                         New Memo +
                     </a>
                 </div>
@@ -31,7 +33,7 @@
                                 </h4>
                             </a>
                         </div>
-                        <a href="#">
+                        <a href="{{route("notebooks.show")}}">
                             <img alt="Responsive image" class="img-fluid" src="/img/notebook.jpg"/>
                         </a>
                         <div class="card-block">

@@ -21,7 +21,7 @@ class CreateNotebooksTable extends Migration
             $table->string('name');
             //$table->string('email')->unique();
             //$table->timestamp('email_verified_a t')->nullable();
-            //$table->string('password');
+            $table->integer('user_id'); //this is used during authentication
             $table->rememberToken();
             $table->timestamps();
             });

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-    
+
+use Illuminate\Support\Facades\Auth;
+
 use App\Notebook;
 
 class NotebooksController extends Controller
@@ -15,7 +17,10 @@ class NotebooksController extends Controller
      */
     public function index()
     {
-        $notebooks = Notebook::all();
+        //dd(Auth::user);
+        $user = Auth::user(); //access current logged in user
+        $notebooks = $user -> notebooks; //$notebooks has the (notebooks) defined in the function in user model of specific $user
+        //$notebooks = Notebook::all();
         //return $notebooks;
         return view('notebook.notebooks', compact('notebooks'));
     }
@@ -40,7 +45,9 @@ class NotebooksController extends Controller
     public function store(Request $request)
     {
         $data = $request -> all();
-        Notebook::create($data);
+        $user = Auth::user();
+        $user -> notebooks() -> create($data);
+        //Notebook::create($data);
         return redirect('/notebook');
         
     }
@@ -64,7 +71,9 @@ class NotebooksController extends Controller
      */
     public function edit($id)
     {
-        $notebook = Notebook::where('id',$id) -> first();
+        $user = Auth::user();
+        $notebook = $user -> notebooks() -> where('id',$id) -> first(); // or use $notebook = $user -> notebooks() -> find($id); which is same
+        //$notebook = Notebook::where('id',$id) -> first();
         //return $notebook;
         return view('notebook.edit') -> with('notebook',$notebook);
     }
@@ -78,7 +87,10 @@ class NotebooksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $notebook = Notebook::where('id', $id) -> first();
+        //dd($request);
+        $user = Auth::user();
+        $notebook = $user -> notebooks() -> where('id',$id) -> first();
+        //$notebook = Notebook::where('id', $id) -> first();
         $notebook -> update($request -> all());
         return redirect('/notebook');
 
@@ -92,7 +104,9 @@ class NotebooksController extends Controller
      */
     public function destroy($id)
     {
-        $notebook = Notebook::where('id', $id) -> first();
+        $user = Auth::user();
+        $notebook = $user -> notebooks() -> where('id',$id) -> first();
+        //$notebook = Notebook::where('id', $id) -> first();
         $notebook -> delete();
         return redirect('/notebook');
         

@@ -11,16 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-           });
+
     
-    Route::get('/notebook', 'NotebooksController@index');
-    Route::get('/notebook/create', 'NotebooksController@create');
-    Route::post('/notebook', 'NotebooksController@store');
-    Route::get('/notebook/{notebook}', 'NotebooksController@edit');
-    Route::put('/notebook/{notebook}', 'NotebooksController@update');
-    Route::delete('/notebook/{notebook}', 'NotebooksController@destroy');
+Route::group(['middleware' => 'auth'], function(){
+             Route::get('/', function () {
+                        return view('index');
+                        });
+             Route::get('/notebook', 'NotebooksController@index');
+             Route::get('/notebook/create', 'NotebooksController@create')-> name('notebooks.create');/*just to make it easier to write and understand*/
+             Route::post('/notebook', 'NotebooksController@store');
+             Route::get('/notebook/{notebook}', 'NotebooksController@edit');
+             Route::put('/notebook/{notebook}', 'NotebooksController@update');
+             Route::delete('/notebook/{notebook}', 'NotebooksController@destroy');
+             
+             });
+
+  
 
 
     #Route::get('/notebook', function () {
@@ -34,3 +40,7 @@ Route::get('/notes', function () {
     Route::get('/home/{name}/{fav}', function ($name,$fav) {
         return ($name.' likes '.$fav);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
