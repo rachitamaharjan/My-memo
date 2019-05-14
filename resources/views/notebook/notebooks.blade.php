@@ -27,7 +27,7 @@
                 <div class="col-sm-6 col-md-3">
                     <div class="card">
                         <div class="card-block">
-                            <a href="/notebook/{{$notebook -> id}}">
+                            <a href="{{route("notebooks.show",$notebook -> id)}}">
                                 <h4 class="card-title">
                                 {{$notebook -> name}}
                                 </h4>

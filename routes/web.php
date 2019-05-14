@@ -21,12 +21,13 @@ Route::group(['middleware' => 'auth'], function(){
              Route::get('/notebook/create', 'NotebooksController@create')-> name('notebooks.create');/*just to make it easier to write and understand*/
              Route::post('/notebook', 'NotebooksController@store');
              Route::get('/notebook/{notebook}/edit', 'NotebooksController@edit');
-             Route::get('/notebook/{notebook}', 'NotebooksController@show');
+             Route::get('/notebook/{notebook}', 'NotebooksController@show')-> name('notebooks.show');
              Route::put('/notebook/{notebook}', 'NotebooksController@update');
              Route::delete('/notebook/{notebook}', 'NotebooksController@destroy');
              
              Route::resource('notes','NotesController');
-             
+             Route::get('notes/{notbookID}/createNote','NotesController@createNote') -> name('createNote');
+
              });
 
 

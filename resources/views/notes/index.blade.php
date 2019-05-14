@@ -9,7 +9,7 @@
                     Notes
                 </h1>
                 <div class="pull-xs-right">
-            <a class="btn btn-primary" href="{{route('notes.createNote')}}" role="button">
+            <a class="btn btn-primary" href="{{route('createNote',$notebook -> id)}}" role="button">
                         New Note +
                     </a>
                 </div>
@@ -24,13 +24,13 @@
                         <div class="card card-block">
                             <a href="#">
                                 <h4 class="card-title">
-                                    {{$note -> title}}
+                                    {{$note->title}}
                                 </h4>
                             </a>
                             <p class="card-text">
-                                {{$note -> body}}
+                                {{$note->body}}
                             </p>
-                            <a class="btn btn-sm btn-info pull-xs-left" href="#">
+                            <a class="btn btn-sm btn-info pull-xs-left" href="{{route('notes.edit')}}">
                                 Edit
                             </a>
                             <form action="#" class="pull-xs-right" method="POST">

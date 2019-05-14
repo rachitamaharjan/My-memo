@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Note;
+
 class NotesController extends Controller
 {
     /**
@@ -25,6 +27,17 @@ class NotesController extends Controller
     {
         //
     }
+    
+    /**
+     made createNote()
+     */
+    
+    public function createNote($notebookID)
+    {
+        return view('notes.create') -> with('id', $notebookID);
+    }
+    
+    
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +47,14 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputData = $request -> all();
+        
+        Note::create($inputData);
+        
+        $notebookID = $request -> notebook_id;
+        
+        return redirect() -> route('notebooks.show',compact('notebookID'));
+       //return back();
     }
 
     /**
@@ -56,7 +76,8 @@ class NotesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $note = Note :: find($id);
+        return view('notes.edit',compact('note'));
     }
 
     /**
@@ -68,7 +89,9 @@ class NotesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $inputData = $request -> all();
+        $note -> update($inputData);
+        return redirect()->route('notebooks.show')->with('id', $note -> notebook_id);
     }
 
     /**
